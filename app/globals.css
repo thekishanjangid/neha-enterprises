@@ -1,26 +1,322 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════
+   NEHA ENTERPRISES — PREMIUM MOBILE-FIRST
+   Blue → Purple → Pink gradient palette
+   DM Serif Display + DM Sans
+   ═══════════════════════════════════════════ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5FA;
+  --bg-warm: #F0F0F8;
+  --bg-mint: #EDF0FF;
+  --bg-dark: #0F0F1A;
+  --bg-charcoal: #1A1A2E;
+
+  /* Brand — from logo gradient */
+  --brand-primary: #2B3AE8;
+  --brand-primary-hover: #1F2CC0;
+  --brand-secondary: #E8247C;
+  --brand-secondary-light: #FFF0F6;
+  --brand-purple: #7B2DB8;
+  --brand-accent: #2B3AE8;
+  --brand-accent-muted: #6E78F0;
+  --brand-subtle: #C4C8F8;
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #5C5C5C;
+  --text-tertiary: #8A8A8A;
+  --text-on-dark: #F5F5F5;
+  --text-muted-dark: #A0A0A0;
+
+  /* Borders */
+  --border-light: #E4E4EC;
+  --border-medium: #D0D0DC;
+
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-warm: var(--bg-warm);
+  --color-bg-mint: var(--bg-mint);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-charcoal: var(--bg-charcoal);
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-secondary-light: var(--brand-secondary-light);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-muted: var(--brand-accent-muted);
+  --color-brand-subtle: var(--brand-subtle);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-muted-dark: var(--text-muted-dark);
+
+  --color-border-light: var(--border-light);
+  --color-border-medium: var(--border-medium);
+
+  --font-serif: "DM Serif Display", "Georgia", serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--brand-accent-muted);
+  color: white;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-accent-muted);
+}
+
+/* ─── Gradient utilities ─── */
+.gradient-brand {
+  background: linear-gradient(135deg, #2B3AE8 0%, #7B2DB8 50%, #E8247C 100%);
+}
+.gradient-brand-text {
+  background: linear-gradient(135deg, #2B3AE8 0%, #7B2DB8 50%, #E8247C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS — Premium Mobile-First
+   ═══════════════════════════════════════════ */
+
+/* Ken Burns — slow zoom for hero background */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.animate-ken-burns {
+  animation: kenBurns 20s ease-out forwards;
+}
+
+/* Fade Up — standard reveal */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-right {
+  animation: slideInRight 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* Drawer Reveal — slides up like a drawer opening */
+@keyframes drawerReveal {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-drawer-reveal {
+  animation: drawerReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* Scroll bounce — gentle indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+.animate-scroll-bounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* Line draw — for process timeline */
+@keyframes lineDraw {
+  from { height: 0; }
+  to { height: 100%; }
+}
+.animate-line-draw {
+  animation: lineDraw 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stagger children — for gallery assembly */
+@keyframes staggerIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Pulse glow — for WhatsApp button */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* Navbar slide down */
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-down {
+  animation: slideDown 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-900 { animation-delay: 900ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1200 { animation-delay: 1200ms; }
+
+/* ─── Decorative Elements ─── */
+.accent-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #2B3AE8, #E8247C);
+}
+
+.accent-line-center {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #2B3AE8, #E8247C);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.accent-line-green {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #2B3AE8, #7B2DB8);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ─── Gallery Masonry ─── */
+.masonry-grid {
+  columns: 3;
+  column-gap: 20px;
+}
+.masonry-grid > * {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+  .masonry-grid { columns: 2; }
+}
+@media (max-width: 640px) {
+  .masonry-grid { columns: 1; }
+}
+
+/* ─── Premium Card Hover ─── */
+.premium-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(43, 58, 232, 0.1);
+}
+
+/* ─── Smooth Image Zoom ─── */
+.img-zoom {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .img-zoom {
+  transform: scale(1.05);
+}
+
+/* ─── Horizontal Scroll (services carousel) ─── */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbar for carousel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─── Mobile Bottom Safe Area ─── */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
 }
