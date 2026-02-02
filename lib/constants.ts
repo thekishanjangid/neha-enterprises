@@ -131,6 +131,96 @@ export const GALLERY_ITEMS = [
   { src: "/images/work/living/living-8.jpg", alt: "Living room with pink sofa, wallpaper panels & chandelier", category: "Furniture", location: "Tonk Road, Jaipur" },
 ] as const;
 
+export const MATERIALS = [
+  {
+    title: "Engineered Wood & Veneers",
+    description: "Marine-grade BWP plywood, natural veneers, termite-resistant MDF — stronger than solid wood, stable in Jaipur's climate.",
+    image: "/images/work/furniture/bedroom-4.jpg",
+  },
+  {
+    title: "Toughened Glass",
+    description: "8mm–12mm toughened safety glass with polished edges. Crystal-clear, impact-resistant, certified for Indian standards.",
+    image: "/images/work/glass/glass-railing-1.jpg",
+  },
+  {
+    title: "Premium Hardware",
+    description: "Hettich, Blum, Hafele — German engineering. 100,000+ cycle-tested hinges and channels that glide like butter.",
+    image: "/images/work/kitchen/kitchen-3.jpg",
+  },
+] as const;
+
+export const FEATURED_PROJECT = {
+  title: "The Mansarovar Residence",
+  subtitle: "From bare walls to a 3-bedroom dream home — complete interior in 45 days",
+  heroImage: "/images/work/living/hall-1.jpg",
+  stats: [
+    { value: "3", label: "Bedrooms" },
+    { value: "45", label: "Days" },
+    { value: "Full", label: "Interior" },
+  ],
+  images: [
+    "/images/work/furniture/bedroom-1.jpg",
+    "/images/work/kitchen/kitchen-1.jpg",
+  ],
+  brief: "A young family wanted timeless design, ample storage, and a show-stopping living area for guests.",
+  solution: "Custom teak-finished furniture, soft-close hardware throughout, and a dramatic double-height hall with glass railings.",
+  result: "A home that feels twice its size, built to last 30+ years.",
+} as const;
+
+export const CRAFTSMANSHIP = [
+  {
+    title: "Clean Joinery",
+    description: "Concealed screws, seamless laminate edges, zero visible gaps — like it grew from one piece of wood.",
+    image: "/images/work/furniture/bedroom-3.jpg",
+  },
+  {
+    title: "Factory Polish",
+    description: "Every edge buffed smooth, every surface dust-free before packing. Walk barefoot-safe finishing.",
+    image: "/images/work/kitchen/kitchen-1.jpg",
+  },
+  {
+    title: "Installation Excellence",
+    description: "Laser-level alignment, walls protected with padding, site cleaned daily — we leave no trace except beauty.",
+    image: "/images/work/glass/glass-railing-2.jpg",
+  },
+] as const;
+
+export const PARTNER_BRANDS = [
+  "Hettich",
+  "Blum",
+  "Hafele",
+  "Ebco",
+  "Godrej",
+  "Greenlam",
+] as const;
+
+export const FAQ_ITEMS = [
+  {
+    question: "Do you provide free design consultation?",
+    answer: "Yes. We visit your space, measure, and create a preliminary design — all at no cost. You only pay if you proceed with manufacturing.",
+  },
+  {
+    question: "What's the typical project timeline?",
+    answer: "Most bedroom sets: 18–25 days. Full home interiors: 35–45 days. We'll give you an exact timeline after measuring your space.",
+  },
+  {
+    question: "How does pricing work?",
+    answer: "We quote per square foot for furniture and per running foot for glass & aluminium work. Pricing depends on materials and hardware grade. No hidden charges, ever.",
+  },
+  {
+    question: "Can I see samples before finalizing?",
+    answer: "Absolutely. Visit our workshop to see material samples, hardware options, and finish choices. We'll also show you similar completed projects.",
+  },
+  {
+    question: "Do you handle old furniture removal?",
+    answer: "Yes, we can dismantle and dispose of old furniture as part of the installation. There's a small additional charge depending on volume.",
+  },
+  {
+    question: "What's your warranty policy?",
+    answer: "1-year comprehensive warranty on manufacturing defects. Hardware carries manufacturer warranty — Hettich and Blum offer 10+ years on mechanisms.",
+  },
+] as const;
+
 export const PROCESS_STEPS = [
   {
     number: "01",
