@@ -1,9 +1,9 @@
 export const BUSINESS = {
   name: "Neha Enterprises",
   tagline: "Custom Furniture & Interior Solutions",
-  phone: "+919876543210",
-  phoneDisplay: "+91 98765 43210",
-  whatsapp: "919876543210",
+  phone: "+917568723377",
+  phoneDisplay: "+91 75687 23377",
+  whatsapp: "917568723377",
   email: "info@nehaenterprises.in",
   address: "123, Industrial Area, Jaipur, Rajasthan 302001",
   city: "Jaipur",
