@@ -1,6 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import MaterialExperience from "@/components/MaterialExperience";
-import ServiceCards from "@/components/ServiceCards";
+import ExploreCollections from "@/components/ExploreCollections";
 import GalleryPreview from "@/components/GalleryPreview";
 import FeaturedProject from "@/components/FeaturedProject";
 import TrustSection from "@/components/TrustSection";
@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <HeroSection />
       <MaterialExperience />
-      <ServiceCards />
+      <ExploreCollections />
       <GalleryPreview />
       <FeaturedProject />
       <TrustSection />
