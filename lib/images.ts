@@ -14,6 +14,9 @@ export const IMAGES = {
   },
 
   gallery: [
+    { src: "/images/work/kitchen/modular-1.jpg", alt: "Premium modular kitchen with handleless cabinets" },
+    { src: "/images/work/kitchen/modular-2.jpg", alt: "Modern kitchen with acrylic finish" },
+    { src: "/images/work/kitchen/modular-3.jpg", alt: "Spacious modular kitchen design" },
     { src: "/images/work/furniture/bedroom-1.jpg", alt: "Premium bedroom with upholstered headboard" },
     { src: "/images/work/glass/glass-railing-1.jpg", alt: "Glass railing with crystal chandelier" },
     { src: "/images/work/furniture/bedroom-2.jpg", alt: "Bedroom with designer wall paneling" },

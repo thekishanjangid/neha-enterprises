@@ -6,10 +6,19 @@ import Link from "next/link";
 // --- Static Data Configuration ---
 const COLLECTIONS = [
   {
+    title: "Modular Kitchens",
+    description: "Heart of the Home",
+    items: [
+      { id: "kitchen-modern", label: "Modern Layouts", image: "/images/work/kitchen/modular-1.jpg" },
+      { id: "kitchen-acrylic", label: "Premium Finish", image: "/images/work/kitchen/modular-2.jpg" },
+      { id: "kitchen-glass", label: "Sleek Designs", image: "/images/work/kitchen/modular-3.jpg" },
+      { id: "kitchen-classic", label: "Classic Modular", image: "/images/work/kitchen/kitchen-1.jpg" },
+    ]
+  },
+  {
     title: "Living Spaces",
     description: "Warmth & Comfort",
     items: [
-      { id: "kitchens", label: "Modular Kitchens", image: "/images/work/kitchen/kitchen-1.jpg" },
       { id: "homes", label: "Full Home Interiors", image: "/images/work/living/hall-1.jpg" },
       { id: "beds", label: "Custom Beds", image: "/images/work/furniture/bedroom-1.jpg" },
       { id: "wardrobes", label: "Wardrobes", image: "/images/work/furniture/bedroom-9.jpg" },

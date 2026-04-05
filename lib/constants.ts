@@ -5,7 +5,7 @@ export const BUSINESS = {
   phoneDisplay: "+91 75687 23377",
   whatsapp: "917568723377",
   email: "info@nehaenterprises.in",
-  address: "123, Industrial Area, Jaipur, Rajasthan 302001",
+  address: "Shop no. 18-19 Gopal Nagar, Girdharipura Road, Dhawas, Jaipur 302021",
   city: "Jaipur",
   state: "Rajasthan",
   hours: "Mon – Sat: 9:00 AM – 7:00 PM",
@@ -99,6 +99,9 @@ export const GALLERY_ITEMS = [
   { src: "/images/work/furniture/bedroom-9.jpg", alt: "Bedroom with wooden TV unit, wardrobe & false ceiling", category: "Furniture", location: "Sitapura, Jaipur" },
   { src: "/images/work/furniture/bedroom-10.jpg", alt: "Bedroom with velvet headboard & dressing area", category: "Furniture", location: "C-Scheme, Jaipur" },
   // Kitchen
+  { src: "/images/work/kitchen/modular-1.jpg", alt: "Premium modular kitchen with handleless cabinets", category: "Kitchen", location: "Jaipur" },
+  { src: "/images/work/kitchen/modular-2.jpg", alt: "Modern kitchen with acrylic finish", category: "Kitchen", location: "Jaipur" },
+  { src: "/images/work/kitchen/modular-3.jpg", alt: "Spacious modular kitchen design", category: "Kitchen", location: "Jaipur" },
   { src: "/images/work/kitchen/kitchen-1.jpg", alt: "Modular kitchen with marble backsplash & chimney", category: "Kitchen", location: "Tonk Road, Jaipur" },
   { src: "/images/work/kitchen/kitchen-2.jpg", alt: "L-shaped modular kitchen with false ceiling lighting", category: "Kitchen", location: "Mansarovar, Jaipur" },
   { src: "/images/work/kitchen/kitchen-3.jpg", alt: "Kitchen with wooden partition shelves & wash area", category: "Kitchen", location: "Malviya Nagar, Jaipur" },
