@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     title: "Neha Enterprises | Custom Furniture & Glass Partitions in Jaipur",
     description:
       "Premium custom furniture, glass partitions & complete interior solutions. 15+ years, 2000+ projects. Get a free consultation.",
-    url: "https://www.nehaenterprises.in",
+    url: "https://www.nehaenterprises.store",
     siteName: "Neha Enterprises",
     locale: "en_IN",
     type: "website",
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.nehaenterprises.in" },
+  alternates: { canonical: "https://www.nehaenterprises.store" },
 };
 
 const jsonLd = {
@@ -56,7 +56,7 @@ const jsonLd = {
   name: "Neha Enterprises",
   description:
     "Custom furniture manufacturing, glass & aluminium partitions, and furniture hardware in Jaipur, Rajasthan",
-  url: "https://www.nehaenterprises.in",
+  url: "https://www.nehaenterprises.store",
   telephone: "+919876543210",
   address: {
     "@type": "PostalAddress",
