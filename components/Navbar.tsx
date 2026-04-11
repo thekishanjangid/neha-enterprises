@@ -63,9 +63,9 @@ export default function Navbar() {
             <Image
               src="/images/newlogo.png"
               alt="Neha Enterprises"
-              width={200}
-              height={56}
-              className="h-12 w-auto"
+              width={260}
+              height={72}
+              className="h-16 w-auto"
               priority
             />
           </Link>

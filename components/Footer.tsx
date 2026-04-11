@@ -10,11 +10,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/newlogo.png"
+                src="/images/logo-footer.png"
                 alt="Neha Enterprises"
-                width={180}
-                height={50}
-                className="h-12 w-auto brightness-0 invert"
+                width={260}
+                height={72}
+                className="h-16 w-auto"
               />
             </Link>
             <p className="mt-4 max-w-xs text-[13px] leading-[1.8] text-white/50">

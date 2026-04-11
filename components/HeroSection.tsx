@@ -63,9 +63,9 @@ export default function HeroSection() {
           <Image
             src="/images/newlogo.png"
             alt="Neha Enterprises"
-            width={220}
-            height={60}
-            className="mx-auto h-20 w-auto md:h-24"
+            width={260}
+            height={90}
+            className="mx-auto h-[4.5rem] w-auto md:h-[5.5rem] lg:h-[6.5rem]"
             priority
           />
         </motion.div>
