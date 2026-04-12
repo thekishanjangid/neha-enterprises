@@ -65,7 +65,7 @@ export default function HeroSection() {
             alt="Neha Enterprises"
             width={260}
             height={90}
-            className="mx-auto h-[4.5rem] w-auto md:h-[5.5rem] lg:h-[6.5rem]"
+            className="mx-auto h-[4.5rem] w-auto md:h-[5.5rem] lg:h-[6.5rem] drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
             priority
           />
         </motion.div>
