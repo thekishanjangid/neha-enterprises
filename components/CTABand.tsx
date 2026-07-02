@@ -27,7 +27,15 @@ export default function CTABand({
         className="object-cover"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-bg-dark/85 backdrop-blur-[2px]" />
+      {/* Animated gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-bg-dark/90 via-bg-dark/85 to-brand-primary/30 animate-gradient" />
+      
+      {/* Grain texture */}
+      <div className="grain-overlay absolute inset-0 pointer-events-none" />
+
+      {/* Floating decorative shapes */}
+      <div className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-brand-primary/10 blur-3xl animate-float" />
+      <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-brand-secondary/10 blur-3xl animate-float" style={{ animationDelay: "3s" }} />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center lg:px-12">
         <motion.div

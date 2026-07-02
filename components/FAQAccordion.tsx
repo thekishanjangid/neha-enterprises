@@ -44,17 +44,28 @@ export default function FAQAccordion() {
               <div
                 className={`overflow-hidden rounded-xl border bg-white transition-all duration-300 ${
                   isOpen
-                    ? "border-l-2 border-l-brand-primary border-t-border-light border-r-border-light border-b-border-light shadow-[0_4px_20px_rgba(43,58,232,0.06)]"
-                    : "border-border-light"
+                    ? "border-brand-primary/20 shadow-[0_4px_20px_rgba(43,58,232,0.06)]"
+                    : "border-border-light hover:border-border-medium"
                 }`}
               >
                 <button
                   onClick={() => toggle(i)}
-                  className="flex w-full items-center justify-between px-5 py-4 text-left md:px-6 md:py-5"
+                  className="flex w-full items-center gap-4 px-5 py-4 text-left md:px-6 md:py-5"
                   aria-expanded={isOpen}
                 >
+                  {/* Gradient number */}
                   <span
-                    className={`pr-4 text-[14px] font-semibold transition-colors duration-200 md:text-[15px] ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[12px] font-bold transition-all duration-300 ${
+                      isOpen
+                        ? "gradient-brand text-white"
+                        : "bg-bg-secondary text-text-tertiary"
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <span
+                    className={`flex-1 pr-2 text-[14px] font-semibold transition-colors duration-200 md:text-[15px] ${
                       isOpen ? "text-brand-primary" : "text-text-primary"
                     }`}
                   >
@@ -63,7 +74,9 @@ export default function FAQAccordion() {
                   <motion.svg
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease }}
-                    className="h-5 w-5 shrink-0 text-text-tertiary"
+                    className={`h-5 w-5 shrink-0 transition-colors duration-200 ${
+                      isOpen ? "text-brand-primary" : "text-text-tertiary"
+                    }`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -86,7 +99,7 @@ export default function FAQAccordion() {
                       transition={{ duration: 0.3, ease }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-border-light px-5 pb-5 pt-4 md:px-6">
+                      <div className="border-t border-border-light px-5 pb-5 pt-4 md:px-6 md:pl-[72px]">
                         <p className="text-[13px] leading-[1.8] text-text-secondary md:text-[14px]">
                           {item.answer}
                         </p>

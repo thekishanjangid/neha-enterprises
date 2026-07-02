@@ -20,6 +20,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.nehaenterprises.store"),
   title: {
     default: "Neha Enterprises | Custom Furniture & Glass Partitions in Jaipur",
     template: "%s | Neha Enterprises",
@@ -57,13 +58,13 @@ const jsonLd = {
   description:
     "Custom furniture manufacturing, glass & aluminium partitions, and furniture hardware in Jaipur, Rajasthan",
   url: "https://www.nehaenterprises.store",
-  telephone: "+919876543210",
+  telephone: "+917568723377",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123, Industrial Area",
+    streetAddress: "Shop no. 18-19 Gopal Nagar, Girdharipura Road, Dhawas",
     addressLocality: "Jaipur",
     addressRegion: "Rajasthan",
-    postalCode: "302001",
+    postalCode: "302021",
     addressCountry: "IN",
   },
   openingHours: "Mo-Sa 09:00-19:00",

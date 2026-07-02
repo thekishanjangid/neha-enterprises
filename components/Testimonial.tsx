@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Reveal, StaggerContainer, StaggerItem, Section, fadeUp } from "@/components/ui/motion";
 import { ContentCard } from "@/components/ui/card";
 
@@ -11,18 +11,40 @@ const TESTIMONIALS = [
     location: "Vaishali Nagar, Jaipur",
     text: "Neha Enterprises built our entire living room furniture — sofa, TV unit, and bookshelves. The quality is outstanding and the pricing was very fair. Highly recommended!",
     rating: 5,
+    initials: "RS",
+    gradient: "from-brand-primary to-brand-purple",
   },
   {
     name: "Priya Agarwal",
     location: "Mansarovar, Jaipur",
     text: "We got glass partitions installed in our office. The team was professional, finished on time, and the result looks fantastic. Will definitely work with them again.",
     rating: 5,
+    initials: "PA",
+    gradient: "from-brand-purple to-brand-secondary",
   },
   {
     name: "Amit Jain",
     location: "C-Scheme, Jaipur",
     text: "From design to installation, everything was handled smoothly. Our modular kitchen turned out exactly how we wanted. Great team and amazing craftsmanship.",
     rating: 5,
+    initials: "AJ",
+    gradient: "from-brand-secondary to-brand-primary",
+  },
+  {
+    name: "Sunita Meena",
+    location: "Jagatpura, Jaipur",
+    text: "We hired Neha Enterprises for our complete 3BHK interior — bedrooms, kitchen, wardrobes, and glass railings. Everything was delivered on time and the finish quality is exceptional.",
+    rating: 5,
+    initials: "SM",
+    gradient: "from-brand-primary to-brand-accent-muted",
+  },
+  {
+    name: "Vikram Rathore",
+    location: "Tonk Road, Jaipur",
+    text: "Best furniture hardware supplier in Jaipur. They recommended Hettich soft-close hinges for our kitchen — it's been 3 years and they still work like new. Very knowledgeable team.",
+    rating: 5,
+    initials: "VR",
+    gradient: "from-brand-accent-muted to-brand-purple",
   },
 ];
 
@@ -38,9 +60,18 @@ function Stars({ count }: { count: number }) {
   );
 }
 
+function Avatar({ initials, gradient }: { initials: string; gradient: string }) {
+  return (
+    <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${gradient} text-[13px] font-bold text-white shadow-sm`}>
+      {initials}
+    </div>
+  );
+}
+
 export default function Testimonial() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [desktopIndex, setDesktopIndex] = useState(0);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -52,6 +83,20 @@ export default function Testimonial() {
     };
     el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Auto-rotate desktop testimonials (show 3 at a time)
+  const desktopVisible = TESTIMONIALS.slice(desktopIndex, desktopIndex + 3);
+  // If we need to wrap around
+  if (desktopVisible.length < 3) {
+    desktopVisible.push(...TESTIMONIALS.slice(0, 3 - desktopVisible.length));
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDesktopIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -81,9 +126,12 @@ export default function Testimonial() {
           >
             <Stars count={t.rating} />
             <p className="mt-3 text-[14px] leading-[1.8] text-text-secondary">{t.text}</p>
-            <div className="mt-5 border-t border-border-light pt-4">
-              <p className="text-[14px] font-semibold text-text-primary">{t.name}</p>
-              <p className="text-[12px] text-text-tertiary">{t.location}</p>
+            <div className="mt-5 flex items-center gap-3 border-t border-border-light pt-4">
+              <Avatar initials={t.initials} gradient={t.gradient} />
+              <div>
+                <p className="text-[14px] font-semibold text-text-primary">{t.name}</p>
+                <p className="text-[12px] text-text-tertiary">{t.location}</p>
+              </div>
             </div>
           </motion.div>
         ))}
@@ -101,26 +149,55 @@ export default function Testimonial() {
         ))}
       </div>
 
-      {/* Desktop: Grid */}
-      <StaggerContainer className="mt-12 hidden gap-6 md:grid md:grid-cols-3" staggerTime={0.12}>
-        {TESTIMONIALS.map((t, i) => (
-          <StaggerItem key={i} variants={fadeUp}>
-            <ContentCard>
-              <div className="gradient-brand-text mb-3 select-none font-serif text-4xl leading-none">
-                &ldquo;
+      {/* Desktop: Auto-rotating 3-card grid */}
+      <div className="mt-12 hidden md:block">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={desktopIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="grid gap-6 md:grid-cols-3"
+          >
+            {desktopVisible.map((t, i) => (
+              <div
+                key={`${t.name}-${desktopIndex}-${i}`}
+                className="rounded-2xl border border-border-light bg-white p-6 transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(43,58,232,0.08)] md:p-8"
+              >
+                <div className="gradient-brand-text mb-3 select-none font-serif text-4xl leading-none">
+                  &ldquo;
+                </div>
+                <p className="text-[14px] leading-[1.8] text-text-secondary">{t.text}</p>
+                <div className="mb-4 mt-5 flex items-center gap-1">
+                  <Stars count={t.rating} />
+                </div>
+                <div className="flex items-center gap-3 border-t border-border-light pt-4">
+                  <Avatar initials={t.initials} gradient={t.gradient} />
+                  <div>
+                    <p className="text-[14px] font-semibold text-text-primary">{t.name}</p>
+                    <p className="text-[12px] text-text-tertiary">{t.location}</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-[14px] leading-[1.8] text-text-secondary">{t.text}</p>
-              <div className="mb-4 mt-5 flex items-center gap-1">
-                <Stars count={t.rating} />
-              </div>
-              <div className="border-t border-border-light pt-4">
-                <p className="text-[14px] font-semibold text-text-primary">{t.name}</p>
-                <p className="text-[12px] text-text-tertiary">{t.location}</p>
-              </div>
-            </ContentCard>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Desktop dots */}
+        <div className="mt-8 flex justify-center gap-2">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setDesktopIndex(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === desktopIndex ? "w-6 bg-brand-primary" : "w-1.5 bg-border-medium hover:bg-text-tertiary"
+              }`}
+              aria-label={`Show testimonial set ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }

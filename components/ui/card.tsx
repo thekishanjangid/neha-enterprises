@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { type ReactNode } from "react";
+import { type ReactNode, useRef, useCallback } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -95,5 +95,74 @@ export function ContentCard({
     >
       {children}
     </motion.div>
+  );
+}
+
+// ─── V2: Glass Card (glassmorphism) ───
+interface GlassCardProps {
+  children: ReactNode;
+  className?: string;
+  dark?: boolean;
+}
+
+export function GlassCard({
+  children,
+  className = "",
+  dark = false,
+}: GlassCardProps) {
+  return (
+    <motion.div
+      variants={cardReveal}
+      className={`rounded-2xl p-6 md:p-8 ${
+        dark ? "glass-card-dark" : "glass-card"
+      } ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── V2: Tilt Card (3D tilt on hover) ───
+interface TiltCardProps {
+  children: ReactNode;
+  className?: string;
+  tiltAmount?: number;
+}
+
+export function TiltCard({
+  children,
+  className = "",
+  tiltAmount = 5,
+}: TiltCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const rotateX = (y - 0.5) * -tiltAmount;
+      const rotateY = (x - 0.5) * tiltAmount;
+      cardRef.current.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    },
+    [tiltAmount]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`transition-transform duration-300 ease-out ${className}`}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {children}
+    </div>
   );
 }

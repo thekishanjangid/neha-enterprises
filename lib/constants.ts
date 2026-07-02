@@ -9,7 +9,7 @@ export const BUSINESS = {
   city: "Jaipur",
   state: "Rajasthan",
   hours: "Mon – Sat: 9:00 AM – 7:00 PM",
-  googleMapsUrl: "https://maps.google.com/?q=Neha+Enterprises+Jaipur",
+  googleMapsUrl: "https://www.google.com/maps/place/Neha+Enterprises+Aluminium+And+Glass+Work+Dhawas/@26.8932885,75.7185421,17z",
   instagram: "#",
   facebook: "#",
   yearFounded: 2009,
@@ -87,6 +87,17 @@ export const GALLERY_CATEGORIES = [
 ] as const;
 
 export const GALLERY_ITEMS = [
+  // Premium showcase images
+  { src: "/images/premium/living-room.png", alt: "Premium living room with custom TV unit, pooja mandir & LED ceiling", category: "Furniture", location: "Jaipur" },
+  { src: "/images/premium/bedroom.png", alt: "Luxury master bedroom with velvet headboard & cove lighting", category: "Furniture", location: "Jaipur" },
+  { src: "/images/premium/kitchen.png", alt: "Ultra-premium modular kitchen with soft-close drawers & marble top", category: "Kitchen", location: "Jaipur" },
+  { src: "/images/premium/glass-office.png", alt: "Modern frameless glass partition system in corporate office", category: "Glass & Aluminium", location: "Jaipur" },
+  { src: "/images/premium/wardrobe.png", alt: "Walk-in wardrobe with glass-front displays & LED shelving", category: "Furniture", location: "Jaipur" },
+  { src: "/images/premium/workshop.png", alt: "Our 5,000 sq ft manufacturing workshop with CNC machines", category: "Commercial", location: "Dhawas, Jaipur" },
+  { src: "/images/premium/tv-unit.png", alt: "Custom TV unit wall with stone cladding & LED-lit floating shelves", category: "Furniture", location: "Jaipur" },
+  { src: "/images/premium/dining.png", alt: "Premium 8-seater dining area with pendant lights & false ceiling", category: "Furniture", location: "Jaipur" },
+  { src: "/images/premium/shower.png", alt: "Frameless glass shower enclosure with marble tile & rain shower", category: "Glass & Aluminium", location: "Jaipur" },
+  { src: "/images/premium/kids-room.png", alt: "Custom kids bunk bed with study desk & storage stairs", category: "Furniture", location: "Jaipur" },
   // Furniture — Bedrooms
   { src: "/images/work/furniture/bedroom-1.jpg", alt: "Premium bedroom with upholstered brown headboard & false ceiling", category: "Furniture", location: "Mansarovar, Jaipur" },
   { src: "/images/work/furniture/bedroom-2.jpg", alt: "Bedroom with designer marble wall paneling & LED lighting", category: "Furniture", location: "Vaishali Nagar, Jaipur" },
@@ -138,17 +149,17 @@ export const MATERIALS = [
   {
     title: "Engineered Wood & Veneers",
     description: "Marine-grade BWP plywood, natural veneers, termite-resistant MDF — stronger than solid wood, stable in Jaipur's climate.",
-    image: "/images/work/furniture/bedroom-4.jpg",
+    image: "/images/premium/wardrobe.png",
   },
   {
     title: "Toughened Glass",
     description: "8mm–12mm toughened safety glass with polished edges. Crystal-clear, impact-resistant, certified for Indian standards.",
-    image: "/images/work/glass/glass-railing-1.jpg",
+    image: "/images/premium/shower.png",
   },
   {
     title: "Premium Hardware",
     description: "Hettich, Blum, Hafele — German engineering. 100,000+ cycle-tested hinges and channels that glide like butter.",
-    image: "/images/work/kitchen/kitchen-3.jpg",
+    image: "/images/premium/kitchen.png",
   },
 ] as const;
 
@@ -221,6 +232,18 @@ export const FAQ_ITEMS = [
   {
     question: "What's your warranty policy?",
     answer: "1-year comprehensive warranty on manufacturing defects. Hardware carries manufacturer warranty — Hettich and Blum offer 10+ years on mechanisms.",
+  },
+  {
+    question: "Do you deliver and install outside Jaipur?",
+    answer: "Yes, we serve all of Rajasthan. For locations outside Jaipur, there may be additional transport charges. We've completed projects in Ajmer, Jodhpur, Udaipur, and other cities.",
+  },
+  {
+    question: "What are the payment terms?",
+    answer: "We typically work with 50% advance to start manufacturing, 40% before dispatch, and 10% after installation and your final approval. We accept bank transfer, UPI, and cheque payments.",
+  },
+  {
+    question: "Can I see a 3D design before manufacturing?",
+    answer: "Yes, for larger projects we provide 3D visualizations so you can see exactly how your furniture will look in your space before we start manufacturing. This is included at no extra cost.",
   },
 ] as const;
 

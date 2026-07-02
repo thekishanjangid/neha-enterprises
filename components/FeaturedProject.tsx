@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FEATURED_PROJECT, WHATSAPP_MESSAGES, getWhatsAppUrl } from "@/lib/constants";
-import { Reveal, Section } from "@/components/ui/motion";
+import { Reveal, Section, CountUp } from "@/components/ui/motion";
 import { Button, WhatsAppIcon } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -42,20 +42,26 @@ export default function FeaturedProject() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </motion.div>
 
-        {/* Floating stats card */}
+        {/* Glassmorphism floating stats card */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4, ease }}
-          className="relative -mt-8 mx-4 rounded-xl bg-white/95 p-4 shadow-[0_8px_30px_rgba(0,0,0,0.1)] backdrop-blur-sm sm:absolute sm:-bottom-6 sm:left-1/2 sm:mx-0 sm:-translate-x-1/2 sm:p-5"
+          className="relative -mt-8 mx-4 rounded-xl glass-card p-4 shadow-[0_8px_30px_rgba(0,0,0,0.1)] sm:absolute sm:-bottom-6 sm:left-1/2 sm:mx-0 sm:-translate-x-1/2 sm:p-5"
         >
           <div className="flex items-center justify-center gap-6 sm:gap-10">
             {FEATURED_PROJECT.stats.map((stat, i) => (
               <div key={stat.label} className="flex items-center gap-6 sm:gap-10">
                 {i > 0 && <div className="h-8 w-[1px] bg-border-light" />}
                 <div className="text-center">
-                  <p className="font-serif text-2xl text-brand-primary">{stat.value}</p>
+                  <p className="font-serif text-2xl text-brand-primary">
+                    {/^\d+$/.test(stat.value) ? (
+                      <CountUp target={parseInt(stat.value)} duration={2} />
+                    ) : (
+                      stat.value
+                    )}
+                  </p>
                   <p className="text-[10px] uppercase tracking-wider text-text-tertiary">
                     {stat.label}
                   </p>
@@ -77,15 +83,16 @@ export default function FeaturedProject() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15, ease }}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl"
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl"
             >
               <Image
                 src={src}
                 alt={`Project detail ${i + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 1024px) 50vw, 25vw"
               />
+              <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
             </motion.div>
           ))}
         </div>
@@ -93,7 +100,7 @@ export default function FeaturedProject() {
         {/* Story text */}
         <Reveal>
           <div className="space-y-5">
-            <div>
+            <div className="rounded-lg border-l-2 border-brand-primary pl-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-brand-primary">
                 The Brief
               </p>
@@ -101,7 +108,7 @@ export default function FeaturedProject() {
                 {FEATURED_PROJECT.brief}
               </p>
             </div>
-            <div>
+            <div className="rounded-lg border-l-2 border-brand-purple pl-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-brand-purple">
                 Our Solution
               </p>
@@ -109,7 +116,7 @@ export default function FeaturedProject() {
                 {FEATURED_PROJECT.solution}
               </p>
             </div>
-            <div>
+            <div className="rounded-lg border-l-2 border-brand-secondary pl-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
                 The Result
               </p>

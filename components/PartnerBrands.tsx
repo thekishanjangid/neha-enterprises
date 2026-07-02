@@ -1,11 +1,14 @@
 "use client";
 
 import { PARTNER_BRANDS } from "@/lib/constants";
-import { Reveal, StaggerContainer, StaggerItem, Section, scaleUp } from "@/components/ui/motion";
+import { Reveal, Section } from "@/components/ui/motion";
 
 export default function PartnerBrands() {
+  // Double the brands for seamless infinite scroll
+  const marqueeItems = [...PARTNER_BRANDS, ...PARTNER_BRANDS];
+
   return (
-    <Section className="bg-white py-16 lg:py-24">
+    <Section className="bg-white py-16 lg:py-24 overflow-hidden">
       <Reveal className="text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
           Trusted Hardware
@@ -19,20 +22,25 @@ export default function PartnerBrands() {
         </p>
       </Reveal>
 
-      <StaggerContainer
-        className="mt-10 grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-6"
-        staggerTime={0.08}
-      >
-        {PARTNER_BRANDS.map((brand) => (
-          <StaggerItem key={brand} variants={scaleUp}>
-            <div className="flex h-20 items-center justify-center rounded-xl border border-border-light bg-bg-secondary transition-all duration-300 hover:border-brand-primary/30 hover:shadow-[0_4px_20px_rgba(43,58,232,0.06)]">
-              <span className="text-[14px] font-semibold tracking-wide text-text-tertiary transition-colors duration-300 hover:text-brand-primary md:text-[15px]">
+      {/* Infinite Marquee */}
+      <div className="mt-10 relative">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        <div className="flex animate-marquee w-max">
+          {marqueeItems.map((brand, i) => (
+            <div
+              key={`${brand}-${i}`}
+              className="mx-4 flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border border-border-light bg-bg-secondary transition-all duration-300 hover:border-brand-primary/30 hover:shadow-[0_4px_20px_rgba(43,58,232,0.06)] hover:bg-white"
+            >
+              <span className="text-[15px] font-semibold tracking-wide text-text-tertiary transition-colors duration-300 hover:text-brand-primary">
                 {brand}
               </span>
             </div>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }
